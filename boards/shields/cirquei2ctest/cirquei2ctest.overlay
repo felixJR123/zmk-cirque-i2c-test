@@ -1,0 +1,24 @@
+#include "cirquei2ctest.dtsi"
+
+/ {
+    kscan0: kscan0 {
+        compatible = "zmk,kscan-gpio-direct";
+        wakeup-source;
+
+        input-gpios
+            = <&xiao_d 1 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+            ;
+    };
+};
+
+&physical_layout_cirquei2ctest {
+    kscan = <&kscan0>;
+};
+// == Input devices ==
+// Input devices on this central part
+// Enabling input listeners and pointing them to the input devices
+&input_listener_unibody0 {
+    status = "okay";
+    device = <&input_device_unibody0>;
+};
+

@@ -1,0 +1,2 @@
+config SHIELD_CIRQUEI2CTEST
+    def_bool $(shields_list_contains,cirquei2ctest)

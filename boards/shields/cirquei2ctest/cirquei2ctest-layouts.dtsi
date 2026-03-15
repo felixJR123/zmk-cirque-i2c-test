@@ -1,0 +1,11 @@
+#include <physical_layouts.dtsi>
+
+/ {
+    physical_layout_cirquei2ctest: physical_layout_cirquei2ctest {
+        compatible = "zmk,physical-layout";
+        display-name = "cirquei2ctest";
+        keys  //                     w   h    x    y     rot    rx    ry
+            = <&key_physical_attrs 100 100  100    0       0     0     0>
+            ;
+    };
+};

@@ -1,0 +1,38 @@
+#include "cirquei2ctest-layouts.dtsi"
+#include <dt-bindings/zmk/matrix_transform.h>
+
+/ {
+    matrix_transform0: matrix_transform0 {
+        compatible = "zmk,matrix-transform";
+        columns = <1>;
+        rows = <1>;
+        map = <
+            RC(0,0)
+        >;
+    };
+};
+
+&physical_layout_cirquei2ctest {
+    transform = <&matrix_transform0>;
+};
+
+// Input devices
+/ {
+    split_inputs {
+        #address-cells = <1>;
+        #size-cells = <0>;
+
+        input_split_unibody0: input_split_unibody0@0 {
+            compatible = "zmk,input-split";
+            reg = <0>;
+            status = "disabled";
+        };
+    };
+
+    input_listener_unibody0: input_listener_unibody0 {
+        compatible = "zmk,input-listener";
+        status = "disabled";
+        device = <&input_split_unibody0>;
+    };
+};
+
