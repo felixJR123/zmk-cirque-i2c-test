@@ -5,22 +5,22 @@
  */
 
 //
-// ======== i2c1 ========
+// ======== i2c0 ========
 //
 
-// pin control for i2c1
+// pin control for i2c0
 // - SDA on D4
 // - SCL on D5
 &pinctrl {
-    /* configuration for i2c1 device, default state */
-    i2c1_default: i2c1_default {
+    /* configuration for i2c0 device, default state */
+    i2c0_default: i2c0_default {
         group1 {
             psels = <NRF_PSEL(TWIM_SDA, 0, 4)>,
                     <NRF_PSEL(TWIM_SCL, 0, 5)>;
         };
     };
-    /* configuration for i2c1 device, sleep state */
-    i2c1_sleep: i2c1_sleep {
+    /* configuration for i2c0 device, sleep state */
+    i2c0_sleep: i2c0_sleep {
         group1 {
             psels = <NRF_PSEL(TWIM_SDA, 0, 4)>,
                     <NRF_PSEL(TWIM_SCL, 0, 5)>;
@@ -28,18 +28,18 @@
         };
     };
 };
-&i2c1 {
+&i2c0 {
   compatible = "nordic,nrf-twim";
   status = "okay";
-  pinctrl-0 = <&i2c1_default>;
-  pinctrl-1 = <&i2c1_sleep>;
+  pinctrl-0 = <&i2c0_default>;
+  pinctrl-1 = <&i2c0_sleep>;
   pinctrl-names = "default", "sleep";
   clock-frequency = <I2C_BITRATE_FAST>;
 };
 
-// devices on i2c1
+// devices on i2c0
 
-&i2c1 {
+&i2c0 {
     input_device_unibody0: input_device_unibody0@2a {
         status = "okay";
         compatible = "cirque,pinnacle";

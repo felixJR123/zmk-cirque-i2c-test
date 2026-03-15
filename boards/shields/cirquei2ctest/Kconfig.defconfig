@@ -17,4 +17,7 @@ if BOARD_SEEEDUINO_XIAO_BLE && SHIELD_CIRQUEI2CTEST
 config I2C
     default y
 
+config SPI
+    default n
+
 endif
