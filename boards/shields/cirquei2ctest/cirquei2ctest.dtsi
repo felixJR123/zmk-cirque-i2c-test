@@ -1,5 +1,6 @@
 #include "cirquei2ctest-layouts.dtsi"
 #include <dt-bindings/zmk/matrix_transform.h>
+#include <dt-bindings/zmk/outputs.h>
 
 / {
     matrix_transform0: matrix_transform0 {
@@ -54,13 +55,13 @@
         input_split_unibody0: input_split_unibody0@0 {
             compatible = "zmk,input-split";
             reg = <0>;
-            status = "okay"; // Changed from disabled
+            status = "disabled";
         };
     };
 
     input_listener_unibody0: input_listener_unibody0 {
         compatible = "zmk,input-listener";
-        status = "okay"; // Changed from disabled
+        status = "disabled";
         device = <&input_split_unibody0>;
 
         /* 2. Intercept Vertical Wheel (Scroll) events */
