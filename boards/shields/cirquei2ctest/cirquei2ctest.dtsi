@@ -48,7 +48,7 @@
             compatible = "zmk,input-processor-behaviors";
             #input-processor-cells = <0>;
             /* Listen for the Scroll Wheel signal created by the mapper below */
-            codes = <INPUT_REL_WHEEL>;
+            codes = <INPUT_REL_WHEEL>, <INPUT_REL_WHEEL>;
             /* First binding = Scroll Up (Vol Up), Second = Scroll Down (Vol Down) */
             bindings = <&kp A>, <&kp B>;
         };
