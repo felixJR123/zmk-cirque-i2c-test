@@ -59,13 +59,11 @@
         status = "okay";
         device = <&input_split_unibody0>;
         
-        scroller {
-            layers = <0>;
-            input-processors = <
-                &zip_xy_to_scroll_mapper
-                &zip_scroll_scaler 1 32
-                &zip_scroll_to_volume
-            >;
-        };
+        /* Move processors here to ensure they catch all events */
+        input-processors = <
+            &zip_xy_to_scroll_mapper
+            &zip_scroll_scaler 1 32
+            &zip_scroll_to_volume
+        >;
     };
 };
