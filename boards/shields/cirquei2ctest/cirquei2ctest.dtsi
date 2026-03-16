@@ -30,7 +30,7 @@
         input_split_unibody0: input_split_unibody0@0 {
             compatible = "zmk,input-split";
             reg = <0>;
-            status = "disabled";
+            status = "okay";  /* WAS DISABLED - CHANGE TO OKAY */
         };
     };
 

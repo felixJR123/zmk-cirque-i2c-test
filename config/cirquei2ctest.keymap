@@ -14,7 +14,7 @@
         default_layer_1 {
             display-name = "Layer1";
             bindings = <
-                &kp A
+                &none
             >;
         };
     };
