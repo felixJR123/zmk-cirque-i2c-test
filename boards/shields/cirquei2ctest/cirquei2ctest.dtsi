@@ -44,13 +44,13 @@
 
 / {
     input_processors {
-        /* This processor translates scroll 'ticks' into volume keypresses */
         zip_scroll_to_volume: zip_scroll_to_volume {
-            compatible = "zmk,input-processor-code-mapper";
+            compatible = "zmk,input-processor-behaviors";
             #input-processor-cells = <0>;
-            type = <INPUT_EV_KEY>;
-            map = <INPUT_BTN_DPAD_UP INPUT_KEY_VOLUMEUP>,
-                  <INPUT_BTN_DPAD_DOWN INPUT_KEY_VOLUMEDOWN>;
+            /* Listen for the Scroll Wheel signal created by the mapper below */
+            codes = <INPUT_REL_WHEEL>;
+            /* First binding = Scroll Up (Vol Up), Second = Scroll Down (Vol Down) */
+            bindings = <&kp C_VOL_UP>, <&kp C_VOL_DN>;
         };
     };
 
@@ -58,6 +58,7 @@
         compatible = "zmk,input-listener";
         status = "okay";
         device = <&input_split_unibody0>;
+        
         scroller {
             layers = <0>;
             input-processors = <
@@ -66,6 +67,5 @@
                 &zip_scroll_to_volume
             >;
         };
-
     };
 };
