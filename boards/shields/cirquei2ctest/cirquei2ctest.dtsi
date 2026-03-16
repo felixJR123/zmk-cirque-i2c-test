@@ -43,7 +43,7 @@
         compatible = "zmk,input-behavior-scaler";
         #binding-cells = <0>;
         /* First binding is for positive (up) scroll, second for negative (down) */
-        bindings = <&kp C_VOL_UP>, <&kp C_VOL_DN>;
+        bindings = <&kp C_VOLUME_UP>, <&kp C_VOL_DN>;
         /* Increase this number if the volume changes too fast */
         scale = <32>; 
     };
