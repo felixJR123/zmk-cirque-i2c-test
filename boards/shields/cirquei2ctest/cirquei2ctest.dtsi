@@ -1,9 +1,5 @@
 #include "cirquei2ctest-layouts.dtsi"
 #include <dt-bindings/zmk/matrix_transform.h>
-#include <dt-bindings/zmk/outputs.h>
-#include <dt-bindings/zmk/input_transform.h>
-#include <input/processors.dtsi>
-
 
 / {
     matrix_transform0: matrix_transform0 {
@@ -20,38 +16,8 @@
     transform = <&matrix_transform0>;
 };
 
-#include <dt-bindings/zmk/keys.h>
-#include <zephyr/dt-bindings/input/input-event-codes.h> // <--- ADD THIS LINE
 // // Input devices
-// / {
-//     split_inputs {
-//         #address-cells = <1>;
-//         #size-cells = <0>;
-
-//         input_split_unibody0: input_split_unibody0@0 {
-//             compatible = "zmk,input-split";
-//             reg = <0>;
-//             status = "disabled";
-//         };
-//     };
-
-//     input_listener_unibody0: input_listener_unibody0 {
-//         compatible = "zmk,input-listener";
-//         status = "disabled";
-//         device = <&input_split_unibody0>;
-//     };
-// };
-
 / {
-    ib_volume_scaler: ib_volume_scaler {
-        compatible = "zmk,input-processor-scaler";
-        #input-processor-cells = <0>;
-        type = <1>; 
-        // Change 'bindings' to 'codes'
-        codes = <&kp C_VOLUME_UP>, <&kp C_VOL_DN>; 
-        scale = <32>; 
-    };
-
     split_inputs {
         #address-cells = <1>;
         #size-cells = <0>;
@@ -63,14 +29,12 @@
         };
     };
 
-input_listener_unibody0: input_listener_unibody0 {
+    input_listener_unibody0: input_listener_unibody0 {
         compatible = "zmk,input-listener";
-        status = "okay"; // Set to okay to actually use it
+        status = "disabled";
         device = <&input_split_unibody0>;
-        
-        // Remove the 'scroll_volume_handler' sub-node and put properties here
-        // If your module supports XY to Scroll conversion, it usually looks like this:
-        input-processors = <&ib_volume_scaler>;
     };
 };
+
+
 
