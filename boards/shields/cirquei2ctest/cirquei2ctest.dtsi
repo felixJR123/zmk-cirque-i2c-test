@@ -16,8 +16,37 @@
     transform = <&matrix_transform0>;
 };
 
-// Input devices
+// // Input devices
+// / {
+//     split_inputs {
+//         #address-cells = <1>;
+//         #size-cells = <0>;
+
+//         input_split_unibody0: input_split_unibody0@0 {
+//             compatible = "zmk,input-split";
+//             reg = <0>;
+//             status = "disabled";
+//         };
+//     };
+
+//     input_listener_unibody0: input_listener_unibody0 {
+//         compatible = "zmk,input-listener";
+//         status = "disabled";
+//         device = <&input_split_unibody0>;
+//     };
+// };
+
 / {
+    /* 1. Define the scaling behavior for volume increments */
+    ib_volume_scaler: ib_volume_scaler {
+        compatible = "zmk,input-behavior-scaler";
+        #binding-cells = <0>;
+        /* First binding is for positive (up) scroll, second for negative (down) */
+        bindings = <&kp C_VOL_UP>, <&kp C_VOL_DN>;
+        /* Increase this number if the volume changes too fast */
+        scale = <32>; 
+    };
+
     split_inputs {
         #address-cells = <1>;
         #size-cells = <0>;
@@ -25,14 +54,21 @@
         input_split_unibody0: input_split_unibody0@0 {
             compatible = "zmk,input-split";
             reg = <0>;
-            status = "disabled";
+            status = "okay"; // Changed from disabled
         };
     };
 
     input_listener_unibody0: input_listener_unibody0 {
         compatible = "zmk,input-listener";
-        status = "disabled";
+        status = "okay"; // Changed from disabled
         device = <&input_split_unibody0>;
+
+        /* 2. Intercept Vertical Wheel (Scroll) events */
+        scroll_volume_handler {
+            layers = <0>; // Keep this on layer 0 for always-on volume
+            input-code = <INPUT_REL_WHEEL>;
+            bindings = <&ib_volume_scaler>;
+        };
     };
 };
 
