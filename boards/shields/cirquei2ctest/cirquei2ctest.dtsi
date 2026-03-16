@@ -44,8 +44,9 @@
 
 / {
     ib_volume_scaler: ib_volume_scaler {
-        compatible = "zmk,input-processor-scaler"; // Try changing 'behavior' to 'processor'
+        compatible = "zmk,input-processor-scaler";
         #input-processor-cells = <0>;
+        type = "wheel"; // <--- ADD THIS LINE
         bindings = <&kp C_VOLUME_UP>, <&kp C_VOL_DN>;
         scale = <32>; 
     };
