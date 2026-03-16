@@ -1,5 +1,6 @@
 #include "cirquei2ctest-layouts.dtsi"
 #include <dt-bindings/zmk/matrix_transform.h>
+#include <zephyr/dt-bindings/input/input-event-codes.h>
 
 / {
     matrix_transform0: matrix_transform0 {
@@ -17,24 +18,47 @@
 };
 
 // // Input devices
-/ {
-    split_inputs {
-        #address-cells = <1>;
-        #size-cells = <0>;
+// / {
+//     split_inputs {
+//         #address-cells = <1>;
+//         #size-cells = <0>;
 
-        input_split_unibody0: input_split_unibody0@0 {
-            compatible = "zmk,input-split";
-            reg = <0>;
-            status = "disabled";
+//         input_split_unibody0: input_split_unibody0@0 {
+//             compatible = "zmk,input-split";
+//             reg = <0>;
+//             status = "disabled";
+//         };
+//     };
+
+//     input_listener_unibody0: input_listener_unibody0 {
+//         compatible = "zmk,input-listener";
+//         status = "disabled";
+//         device = <&input_split_unibody0>;
+//     };
+// };
+
+
+/ {
+    input_processors {
+        /* This processor translates scroll 'ticks' into volume keypresses */
+        zip_scroll_to_volume: zip_scroll_to_volume {
+            compatible = "zmk,input-processor-behaviors";
+            #input-processor-cells = <0>;
+            
+            /* Target the vertical scroll wheel */
+            codes = <INPUT_REL_WHEEL>;
+            
+            /* Bindings: [Positive Scroll (Up), Negative Scroll (Down)] */
+            bindings = <&kp C_VOL_UP>, <&kp C_VOL_DN>;
         };
     };
 
     input_listener_unibody0: input_listener_unibody0 {
         compatible = "zmk,input-listener";
-        status = "disabled";
+        status = "okay";
         device = <&input_split_unibody0>;
+
+        /* Apply the processor here */
+        input-processors = <&zip_xy_scaler 1 32>, <&zip_scroll_to_volume>;
     };
 };
-
-
-
