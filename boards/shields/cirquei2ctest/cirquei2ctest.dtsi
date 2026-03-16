@@ -45,7 +45,8 @@
             compatible = "zmk,input-processor-code-mapper";
             #input-processor-cells = <0>;
             type = <INPUT_EV_KEY>;
-            map = <INPUT_BTN_DPAD_UP INPUT_KEY_VOLUMEUP>;
+            map = <INPUT_BTN_DPAD_UP INPUT_KEY_VOLUMEUP>,
+                  <INPUT_BTN_DPAD_DOWN INPUT_KEY_VOLUMEDOWN>;
         };
     };
 
