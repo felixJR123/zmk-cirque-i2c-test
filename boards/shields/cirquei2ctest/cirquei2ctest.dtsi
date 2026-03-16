@@ -42,10 +42,10 @@
     input_processors {
         /* This processor translates scroll 'ticks' into volume keypresses */
         zip_scroll_to_volume: zip_scroll_to_volume {
-            compatible = "zmk,input-processor-behaviors";
+            compatible = "zmk,input-processor-code-mapper";
             #input-processor-cells = <0>;
-            codes    = <INPUT_BTN_DPAD_UP>;
-            bindings = <&kp C_VOLUME_UP >;
+            type = <INPUT_EV_KEY>;
+            map = <INPUT_BTN_DPAD_UP INPUT_KEY_VOLUMEUP>;
         };
     };
 
