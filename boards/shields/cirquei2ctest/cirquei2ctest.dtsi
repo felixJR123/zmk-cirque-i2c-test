@@ -70,7 +70,7 @@ ib_volume_scaler: ib_volume_scaler {
 /* 2. Intercept Vertical Wheel (Scroll) events */
         scroll_volume_handler {
             layers = <0>;
-            event-codes = <INPUT_REL_WHEEL>; // Change from input-codes to event-codes
+            input-code = <0x08>; // Use the number 0x08 directly
             bindings = <&ib_volume_scaler>;
         };
     }; // Close listener
