@@ -41,7 +41,7 @@
 //     };
 // };
 
-
+#include <dt-bindings/zmk/keys.h>
 / {
     input_processors {
         zip_scroll_to_volume: zip_scroll_to_volume {
