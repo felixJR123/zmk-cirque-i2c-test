@@ -63,12 +63,14 @@
         status = "okay";
         device = <&input_split_unibody0>;
 
-        /* This pipeline intercepts the XY movement, turns it into scroll, 
-           scales it so it isn't too fast, then converts it to volume */
-        input-processors = <
-            &zip_xy_to_scroll_mapper
-            &zip_scroll_scaler 1 64 
-            &zip_scroll_to_volume
-        >;
+        /* Volume logic only active on Layer 1 */
+        scroll_volume {
+            layers = <1>; 
+            input-processors = <
+                &zip_xy_to_scroll_mapper
+                &zip_scroll_scaler 1 32
+                &zip_scroll_to_volume
+            >;
+        };
     };
 };
