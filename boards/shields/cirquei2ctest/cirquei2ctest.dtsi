@@ -62,17 +62,14 @@ ib_volume_scaler: ib_volume_scaler {
         };
     };
 
-    input_listener_unibody0: input_listener_unibody0 {
+input_listener_unibody0: input_listener_unibody0 {
         compatible = "zmk,input-listener";
-        status = "disabled"; 
+        status = "okay"; // Set to okay to actually use it
         device = <&input_split_unibody0>;
-
-/* 2. Intercept Vertical Wheel (Scroll) events */
-        scroll_volume_handler {
-            layers = <0>;
-            input-code = <0x08>; // Use the number 0x08 directly
-            bindings = <&ib_volume_scaler>;
-        };
-    }; // Close listener
+        
+        // Remove the 'scroll_volume_handler' sub-node and put properties here
+        // If your module supports XY to Scroll conversion, it usually looks like this:
+        input-processors = <&ib_volume_scaler>;
+    };
 };
 
