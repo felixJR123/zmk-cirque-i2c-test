@@ -1,6 +1,7 @@
 #include "cirquei2ctest-layouts.dtsi"
 #include <dt-bindings/zmk/matrix_transform.h>
 #include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/input_transform.h>
 
 / {
     matrix_transform0: matrix_transform0 {
@@ -59,15 +60,15 @@
         };
     };
 
-    input_listener_unibody0: input_listener_unibody0 {
+input_listener_unibody0: input_listener_unibody0 {
         compatible = "zmk,input-listener";
         status = "disabled";
         device = <&input_split_unibody0>;
 
         /* 2. Intercept Vertical Wheel (Scroll) events */
         scroll_volume_handler {
-            layers = <0>; // Keep this on layer 0 for always-on volume
-            input-code = <INPUT_REL_WHEEL>;
+            layers = <0>;
+            input-code = <INPUT_REL_WHEEL>; // Now this will be recognized
             bindings = <&ib_volume_scaler>;
         };
     };
