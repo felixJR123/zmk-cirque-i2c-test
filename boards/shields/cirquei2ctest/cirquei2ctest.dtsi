@@ -50,7 +50,7 @@
             /* Listen for the Scroll Wheel signal created by the mapper below */
             codes = <INPUT_REL_WHEEL>;
             /* First binding = Scroll Up (Vol Up), Second = Scroll Down (Vol Down) */
-            bindings = <&kp C_VOLUME_UP>, <&kp C_VOL_DN>;
+            bindings = <&kp C_VOLUME_UP &kp C_VOL_DN>;
         };
     };
 
