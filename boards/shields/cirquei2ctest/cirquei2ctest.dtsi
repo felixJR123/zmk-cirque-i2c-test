@@ -1,6 +1,10 @@
 #include "cirquei2ctest-layouts.dtsi"
+#include <input/processors.dtsi>
+#include <dt-bindings/zmk/input_transform.h>
 #include <dt-bindings/zmk/matrix_transform.h>
+#include <physical_layouts.dtsi>
 #include <zephyr/dt-bindings/input/input-event-codes.h>
+
 
 / {
     matrix_transform0: matrix_transform0 {
