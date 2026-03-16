@@ -60,7 +60,7 @@
 
     input_listener_unibody0: input_listener_unibody0 {
         compatible = "zmk,input-listener";
-        status = "disabled";
+        status = "okay";
         device = <&input_split_unibody0>;
 
         /* Volume logic only active on Layer 1 */

@@ -32,6 +32,6 @@ include:
 #    cmake-args: -DCONFIG_ZMK_STUDIO=y
 #    artifact-name: cirquei2ctest_with_studio
 
-  - board: seeeduino_xiao_ble
-    shield: settings_reset
+  # - board: seeeduino_xiao_ble
+  #   shield: settings_reset
   
