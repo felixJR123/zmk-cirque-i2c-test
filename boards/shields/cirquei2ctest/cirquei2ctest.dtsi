@@ -47,6 +47,7 @@
 ib_volume_scaler: ib_volume_scaler {
         compatible = "zmk,input-behavior-scaler";
         #binding-cells = <0>;
+        #input-processor-cells = <0>; // <--- ADD THIS LINE
         bindings = <&kp C_VOLUME_UP>, <&kp C_VOL_DN>; // This will now work
         scale = <32>; 
     };
