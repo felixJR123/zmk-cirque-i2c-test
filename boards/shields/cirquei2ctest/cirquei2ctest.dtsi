@@ -4,6 +4,7 @@
 #include <dt-bindings/zmk/input_transform.h>
 #include <zephyr/dt-bindings/input/input-event-codes.h> // <--- ADD THIS LINE
 #include <input/processors.dtsi>
+#include <dt-bindings/zmk/keys.h>
 
 / {
     matrix_transform0: matrix_transform0 {
@@ -42,12 +43,10 @@
 
 / {
     /* 1. Define the scaling behavior for volume increments */
-    ib_volume_scaler: ib_volume_scaler {
+ib_volume_scaler: ib_volume_scaler {
         compatible = "zmk,input-behavior-scaler";
         #binding-cells = <0>;
-        /* First binding is for positive (up) scroll, second for negative (down) */
-        bindings = <&kp C_VOLUME_UP>, <&kp C_VOL_DN>;
-        /* Increase this number if the volume changes too fast */
+        bindings = <&kp C_VOLUME_UP>, <&kp C_VOL_DN>; // This will now work
         scale = <32>; 
     };
 
