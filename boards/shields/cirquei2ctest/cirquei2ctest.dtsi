@@ -49,7 +49,7 @@
             codes = <INPUT_REL_WHEEL>;
             
             /* Bindings: [Positive Scroll (Up), Negative Scroll (Down)] */
-            bindings = <&kp C_VOLUME_UP>, <&kp C_VOL_DN>;
+            bindings = <&kp C_VOLUME_UP &kp C_VOL_DN>;
         };
     };
 
