@@ -30,7 +30,7 @@
         input_split_unibody0: input_split_unibody0@0 {
             compatible = "zmk,input-split";
             reg = <0>;
-            status = "okay";  /* WAS DISABLED - CHANGE TO OKAY */
+            status = "disabled";
         };
     };
 
@@ -60,7 +60,7 @@
 
     input_listener_unibody0: input_listener_unibody0 {
         compatible = "zmk,input-listener";
-        status = "okay";
+        status = "disabled";
         device = <&input_split_unibody0>;
 
         /* Volume logic only active on Layer 1 */
