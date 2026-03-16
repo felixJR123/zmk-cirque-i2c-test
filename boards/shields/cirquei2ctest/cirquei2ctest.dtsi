@@ -43,12 +43,10 @@
 // };
 
 / {
-    /* 1. Define the scaling behavior for volume increments */
-ib_volume_scaler: ib_volume_scaler {
-        compatible = "zmk,input-behavior-scaler";
-        #binding-cells = <0>;
-        #input-processor-cells = <0>; // <--- ADD THIS LINE
-        bindings = <&kp C_VOLUME_UP>, <&kp C_VOL_DN>; // This will now work
+    ib_volume_scaler: ib_volume_scaler {
+        compatible = "zmk,input-processor-scaler"; // Try changing 'behavior' to 'processor'
+        #input-processor-cells = <0>;
+        bindings = <&kp C_VOLUME_UP>, <&kp C_VOL_DN>;
         scale = <32>; 
     };
 
