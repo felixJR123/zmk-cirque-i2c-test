@@ -48,7 +48,7 @@
             compatible = "zmk,input-processor-code-mapper";
             #input-processor-cells = <0>;
             /* Listen for the Scroll Wheel signal created by the mapper below */
-            type = <INPUT_EV_REL>, <INPUT_EV_REL>;
+            type = <INPUT_EV_REL>;
             /* First binding = Scroll Up (Vol Up), Second = Scroll Down (Vol Down) */
             map = <INPUT_BTN_DPAD_UP INPUT_KEY_VOLUMEUP>, <INPUT_BTN_DPAD_DOWN INPUT_KEY_VOLUMEDOWN>;
         };
