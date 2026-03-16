@@ -44,13 +44,17 @@
 #include <dt-bindings/zmk/keys.h>
 / {
     input_processors {
+        /* This converts vertical scroll ticks into volume keystrokes */
         zip_scroll_to_volume: zip_scroll_to_volume {
-            compatible = "zmk,input-processor-code-mapper";
+            compatible = "zmk,input-processor-behaviors";
             #input-processor-cells = <0>;
-            /* Listen for the Scroll Wheel signal created by the mapper below */
-            type = <INPUT_EV_REL>;
-            /* First binding = Scroll Up (Vol Up), Second = Scroll Down (Vol Down) */
-            map = <INPUT_BTN_DPAD_UP INPUT_KEY_VOLUMEUP>, <INPUT_BTN_DPAD_DOWN INPUT_KEY_VOLUMEDOWN>;
+            
+            /* We use the wheel code twice to match the two bindings */
+            codes = <INPUT_REL_WHEEL>, <INPUT_REL_WHEEL>;
+            
+            /* Binding 1: Positive movement (Scroll Up) -> Volume Up */
+            /* Binding 2: Negative movement (Scroll Down) -> Volume Down */
+            bindings = <&kp C_VOL_UP>, <&kp C_VOL_DN>;
         };
     };
 
@@ -58,11 +62,12 @@
         compatible = "zmk,input-listener";
         status = "okay";
         device = <&input_split_unibody0>;
-        
-        /* Move processors here to ensure they catch all events */
+
+        /* This pipeline intercepts the XY movement, turns it into scroll, 
+           scales it so it isn't too fast, then converts it to volume */
         input-processors = <
             &zip_xy_to_scroll_mapper
-            &zip_scroll_scaler 1 32
+            &zip_scroll_scaler 1 64 
             &zip_scroll_to_volume
         >;
     };
