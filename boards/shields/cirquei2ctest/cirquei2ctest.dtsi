@@ -44,15 +44,18 @@
 #include <dt-bindings/zmk/keys.h>
 / {
     input_processors {
-        scroll_to_volume: scroll_to_volume {
+        vol_up_proc: vol_up_proc {
             compatible = "zmk,input-processor-behaviors";
             #input-processor-cells = <0>;
-
-            /* One code, two directions handled internally */
             codes = <INPUT_REL_WHEEL>;
+            bindings = <&kp C_VOL_UP>;
+        };
 
-            /* First = positive, Second = negative */
-            bindings = <&kp C_VOL_UP>, <&kp C_VOL_DN>;
+        vol_dn_proc: vol_dn_proc {
+            compatible = "zmk,input-processor-behaviors";
+            #input-processor-cells = <0>;
+            codes = <INPUT_REL_WHEEL>;
+            bindings = <&kp C_VOL_DN>;
         };
     };
 
@@ -65,8 +68,14 @@
             layers = <1>;
             input-processors = <
                 &zip_xy_to_scroll_mapper
-                &zip_scroll_scaler 1 32
-                &scroll_to_volume
+
+                /* Scroll UP only */
+                &zip_scroll_threshold 1
+                &vol_up_proc
+
+                /* Scroll DOWN only */
+                &zip_scroll_threshold (-1)
+                &vol_dn_proc
             >;
         };
     };
