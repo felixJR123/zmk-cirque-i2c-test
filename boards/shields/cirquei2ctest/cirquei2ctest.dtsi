@@ -74,7 +74,7 @@ input_listener_unibody0: input_listener_unibody0 {
             &vol_up_proc
 
             /* Negative scroll only */
-            &zip_scroll_scaler -1 32
+            &zip_scroll_scaler (-1) 32
             &vol_dn_proc
         >;
     };
