@@ -34,26 +34,11 @@
         };
     };
 
-//     input_listener_unibody0: input_listener_unibody0 {
-//         compatible = "zmk,input-listener";
-//         status = "disabled";
-//         device = <&input_split_unibody0>;
-//     };
- };
-
-#include <dt-bindings/zmk/keys.h>
-/ {
     input_listener_unibody0: input_listener_unibody0 {
         compatible = "zmk,input-listener";
-        status = "okay";
+        status = "disabled";
         device = <&input_split_unibody0>;
-
-        scroll_volume {
-            layers = <1>;
-            input-processors = <
-                &zip_xy_to_scroll_mapper
-                &scroll_to_volume   /* your custom processor */
-            >;
-        };
     };
-};
+ };
+
+
