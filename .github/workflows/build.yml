@@ -3,4 +3,33 @@ on: [push, pull_request, workflow_dispatch]
 
 jobs:
   build:
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@v0.3
+    runs-on: ubuntu-latest
+    container:
+      image: zmkfirmware/zmk-build-arm:stable
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Initialize West
+        run: west init -l config
+
+      - name: West Update
+        run: west update
+
+      - name: West Zephyr export
+        run: west zephyr-export
+
+      # THE FIX: Delete the upstream bindings before the build starts
+      - name: Remove conflicting upstream bindings
+        run: |
+          find modules -name "cirque,pinnacle-spi.yaml" -path "*/zephyr/*" -delete
+          find modules -name "cirque,pinnacle-i2c.yaml" -path "*/zephyr/*" -delete
+
+      - name: West Build
+        run: west build -s zmk/app -b xiao_ble -- -DSHIELD=cirquei2ctest -DZMK_CONFIG="${{ github.workspace }}/config"
+
+      - name: Archive artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware
+          path: build/zephyr/zmk.uf2

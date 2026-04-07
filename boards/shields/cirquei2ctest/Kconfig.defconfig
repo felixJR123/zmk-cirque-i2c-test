@@ -9,9 +9,15 @@ config ZMK_POINTING
 
 endif
 
-config SHIELD_CIRQUEI2CTEST
-    bool
-    select I2C
-    select INPUT
+# ---------------------
+# Kconfig for shield "cirquei2ctest" with board "seeeduino_xiao_ble"
+# ---------------------
+if BOARD_SEEEDUINO_XIAO_BLE && SHIELD_CIRQUEI2CTEST
 
+config I2C
+    default y
 
+config SPI
+    default n
+
+endif
