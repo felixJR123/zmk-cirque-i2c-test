@@ -8,7 +8,8 @@ manifest:
     - name: zmk
       remote: zmkfirmware
       revision: main
-      import: app/west.yml
+      import: 
+        path: app/west.yml
         exclude:
           - zephyr/dts/bindings/input/cirque,pinnacle-spi.yaml
           - zephyr/dts/bindings/input/cirque,pinnacle-i2c.yaml
