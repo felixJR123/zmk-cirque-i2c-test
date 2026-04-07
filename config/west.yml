@@ -8,9 +8,10 @@ manifest:
     - name: zmk
       remote: zmkfirmware
       revision: main
-      import:
-        path: app/west.yml
-        # This prevents the ZMK manifest from pulling in its own cirque module
+      import: 
+        # For ZMK, the import needs to be the file name string
+        # followed by the filter options
+        file: app/west.yml
         name-blocklist:
           - cirque
     - name: cirque-input-module
