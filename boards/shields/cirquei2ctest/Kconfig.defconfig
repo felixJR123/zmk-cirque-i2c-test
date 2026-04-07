@@ -9,4 +9,9 @@ config ZMK_POINTING
 
 endif
 
+config SHIELD_CIRQUEI2CTEST
+    bool
+    select I2C
+    select INPUT
+
 
