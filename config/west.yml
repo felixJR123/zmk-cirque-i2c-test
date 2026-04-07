@@ -2,16 +2,20 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: felixJR123
-      url-base: https://github.com/felixJR123
+    - name: petejohanson
+      url-base: https://github.com/petejohanson
   projects:
     - name: zmk
       remote: zmkfirmware
       revision: main
-      import: app/west.yml
-    - name: cirque-input-module 
-      remote: felixJR123
+      import:
+        path: app/west.yml
+        # This prevents the ZMK manifest from pulling in its own cirque module
+        name-blocklist:
+          - cirque
+    - name: cirque-input-module
+      remote: petejohanson
       revision: main
+      path: modules/input/cirque
   self:
     path: config
-
