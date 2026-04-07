@@ -42,7 +42,7 @@
 &i2c0 {
     input_device_unibody0: input_device_unibody0@2a {
         status = "okay";
-        compatible = "cirque,pinnacle";
+        compatible = "cirque,pinnacle-custom";
         reg = <0x2a>;
         dr-gpios = <&xiao_d 6 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)>;
         sleep;
