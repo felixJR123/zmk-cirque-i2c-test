@@ -8,12 +8,10 @@ manifest:
     - name: zmk
       remote: zmkfirmware
       revision: main
-      import:
-        path: app/west.yml
-        # Add this 'exclude' section:
-        exclude:
-          - zephyr/dts/bindings/input/cirque,pinnacle-spi.yaml
-          - zephyr/dts/bindings/input/cirque,pinnacle-i2c.yaml
+      import: app/west.yml
+      exclude:
+        - zephyr/dts/bindings/input/cirque,pinnacle-spi.yaml
+        - zephyr/dts/bindings/input/cirque,pinnacle-i2c.yaml
     - name: cirque-input-module
       remote: petejohanson
       revision: main
