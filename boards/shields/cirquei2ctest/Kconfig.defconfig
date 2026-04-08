@@ -8,8 +8,7 @@ config ZMK_POINTING
     default y
 
 config I2C
-    default y if $(success,test -n "$(CONFIG_I2C)")
-    # This tells Kconfig: "If I2C is already being handled by the board/PMIC, don't create a new dependency loop."
+    default y
 
 endif
 
