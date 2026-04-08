@@ -6,6 +6,18 @@ config ZMK_KEYBOARD_NAME
 
 config ZMK_POINTING
     default y
+
 endif
 
+# ---------------------
+# Kconfig for shield "cirquei2ctest" with board "seeeduino_xiao_ble"
+# ---------------------
+if BOARD_SEEEDUINO_XIAO_BLE && SHIELD_CIRQUEI2CTEST
 
+config I2C
+    default y
+
+config SPI
+    default n
+
+endif
