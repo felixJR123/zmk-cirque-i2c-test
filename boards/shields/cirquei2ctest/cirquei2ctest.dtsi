@@ -30,13 +30,13 @@
         input_split_unibody0: input_split_unibody0@0 {
             compatible = "zmk,input-split";
             reg = <0>;
-            status = "okay";
+            status = "disabled";
         };
     };
 
     input_listener_unibody0: input_listener_unibody0 {
         compatible = "zmk,input-listener";
-        status = "okay";
+        status = "disabled";
         device = <&input_split_unibody0>;
     };
  };
