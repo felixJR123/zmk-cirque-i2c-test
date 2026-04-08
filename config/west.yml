@@ -18,5 +18,5 @@ manifest:
       remote: felixJR123
       revision: main
   self:
-    path: config
+    path: config 
 
