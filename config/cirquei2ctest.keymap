@@ -8,7 +8,7 @@
         default_layer {
             display-name = "Base";
             bindings = <
-                &mo 1
+                &kp A
             >;
         };
         default_layer_1 {
