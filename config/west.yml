@@ -8,11 +8,11 @@ manifest:
     - name: zmk
       remote: zmkfirmware
       revision: main
-      import: 
-        # For ZMK, the import needs to be the file name string
-        # followed by the filter options
+      import:
         file: app/west.yml
+        # Try blocklisting 'zmk's version of the input module specifically
         name-blocklist:
+          - zmk-input-module 
           - cirque
     - name: cirque-input-module
       remote: petejohanson
